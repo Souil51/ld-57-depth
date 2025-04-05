@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdok0edoo2cn5"]
+
+[ext_resource type="Texture2D" uid="uid://cxqxrwlncyb21" path="res://assets/graphics/barre_saisie.png" id="1_hmcjx"]
+[ext_resource type="Script" path="res://scenes/selector.gd" id="1_jh2sl"]
+[ext_resource type="Texture2D" uid="uid://cjklr0d2m4233" path="res://assets/graphics/selecteur_saisie.png" id="2_n6sbx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq3fp"]
+size = Vector2(38, 80)
+
+[node name="Selector" type="Node2D"]
+script = ExtResource("1_jh2sl")
+
+[node name="BarreSaisie" type="Sprite2D" parent="."]
+position = Vector2(300, 40)
+texture = ExtResource("1_hmcjx")
+
+[node name="selector" type="Sprite2D" parent="."]
+position = Vector2(19, 40)
+texture = ExtResource("2_n6sbx")
+
+[node name="Area2D" type="Area2D" parent="selector"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="selector/Area2D"]
+shape = SubResource("RectangleShape2D_uq3fp")
+
+[connection signal="input_event" from="selector/Area2D" to="." method="_on_area_2d_input_event"]

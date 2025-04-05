@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcddnd37e4ter"]
+
+[ext_resource type="Script" path="res://scenes/tresor.gd" id="1_0spwd"]
+[ext_resource type="Texture2D" uid="uid://dlyjcxrblug2c" path="res://assets/graphics/tresor_1.png" id="2_hxgjn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62ldr"]
+size = Vector2(100, 60)
+
+[node name="Tresor" type="Node2D"]
+script = ExtResource("1_0spwd")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hxgjn")
+
+[node name="Area2D" type="Area2D" parent="sprite" groups=["tresor"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sprite/Area2D"]
+shape = SubResource("RectangleShape2D_62ldr")

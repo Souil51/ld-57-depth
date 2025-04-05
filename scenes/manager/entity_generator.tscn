@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://l480keiox2l"]
+
+[ext_resource type="Script" path="res://scenes/manager/entity_generator.gd" id="1_f05w2"]
+
+[node name="EntityGenerator" type="Node2D"]
+script = ExtResource("1_f05w2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

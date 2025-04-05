@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://buw3r2fgpi0mc"]
+
+[ext_resource type="Script" path="res://scenes/cale.gd" id="1_aw1nx"]
+[ext_resource type="Texture2D" uid="uid://dlyjcxrblug2c" path="res://assets/graphics/tresor_1.png" id="2_xyx2p"]
+[ext_resource type="Texture2D" uid="uid://cn5lvyk6hvj3c" path="res://assets/graphics/tresor_2.png" id="3_avlfv"]
+[ext_resource type="Texture2D" uid="uid://gel77qsji6ey" path="res://assets/graphics/tresor_3.png" id="4_xa1y7"]
+
+[node name="Cale" type="Node2D"]
+script = ExtResource("1_aw1nx")
+
+[node name="tresors_1" type="Node2D" parent="."]
+position = Vector2(68, 53)
+
+[node name="Sprite2D" type="Sprite2D" parent="tresors_1"]
+texture = ExtResource("2_xyx2p")
+
+[node name="Label" type="Label" parent="tresors_1"]
+offset_left = 51.0
+offset_top = -33.0
+offset_right = 102.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 30
+text = "x 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="tresors_1"]
+offset_left = 133.0
+offset_top = -16.0
+offset_right = 203.0
+offset_bottom = 18.0
+text = "Throw"
+
+[node name="tresors_2" type="Node2D" parent="."]
+position = Vector2(69, 133)
+
+[node name="Sprite2D" type="Sprite2D" parent="tresors_2"]
+texture = ExtResource("3_avlfv")
+
+[node name="Label" type="Label" parent="tresors_2"]
+offset_left = 51.0
+offset_top = -33.0
+offset_right = 102.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 30
+text = "x 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="tresors_2"]
+offset_left = 131.0
+offset_top = -14.0
+offset_right = 201.0
+offset_bottom = 20.0
+text = "Throw"
+
+[node name="tresors_3" type="Node2D" parent="."]
+position = Vector2(69, 212)
+
+[node name="Sprite2D" type="Sprite2D" parent="tresors_3"]
+texture = ExtResource("4_xa1y7")
+
+[node name="Label" type="Label" parent="tresors_3"]
+offset_left = 50.0
+offset_top = -32.0
+offset_right = 101.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 30
+text = "x 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="tresors_3"]
+offset_left = 132.0
+offset_top = -14.0
+offset_right = 202.0
+offset_bottom = 20.0
+text = "Throw"
+
+[node name="weigt_factor" type="Label" parent="."]
+offset_left = -68.0
+offset_top = 245.0
+offset_right = 334.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 16
+text = "The weigt make your oxygen depletes X times faster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -38.0
+offset_top = 275.0
+offset_right = 314.0
+offset_bottom = 298.0
+theme_override_font_sizes/font_size = 16
+text = "Throw some of your treasures to manage this
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="tresors_1/Button" to="." method="_on_tresors_1_pressed"]
+[connection signal="pressed" from="tresors_2/Button" to="." method="_on_tresors_2_pressed"]
+[connection signal="pressed" from="tresors_3/Button" to="." method="_on_tresors_3_pressed"]

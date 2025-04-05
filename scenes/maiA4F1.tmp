@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://d20nbii1e6786"]
+
+[ext_resource type="Texture2D" uid="uid://b874770nl0lrl" path="res://assets/graphics/ancre.png" id="1_5bl3i"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_c23cg"]
+[ext_resource type="Texture2D" uid="uid://ecqnqevnuwn5" path="res://icon.svg" id="2_3k574"]
+[ext_resource type="PackedScene" uid="uid://cdok0edoo2cn5" path="res://scenes/selector.tscn" id="2_sorrk"]
+[ext_resource type="Texture2D" uid="uid://c88oxn0dbgy6r" path="res://assets/graphics/texture_light.webp" id="3_1wats"]
+[ext_resource type="Texture2D" uid="uid://b23llbyl8pyks" path="res://assets/graphics/dechet.png" id="4_gxwc2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ul6nb"]
+light_mode = 2
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_c23cg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_ul6nb")
+position = Vector2(626, 372)
+scale = Vector2(10.7813, 6.8125)
+texture = ExtResource("2_3k574")
+
+[node name="ancre_parent" type="Node2D" parent="."]
+
+[node name="camera" type="Camera2D" parent="ancre_parent"]
+position = Vector2(640, 360)
+
+[node name="ancre" type="Sprite2D" parent="ancre_parent"]
+position = Vector2(622, 265.295)
+texture = ExtResource("1_5bl3i")
+
+[node name="PointLight2D" type="PointLight2D" parent="ancre_parent/ancre"]
+texture = ExtResource("3_1wats")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Selector" parent="CanvasLayer" instance=ExtResource("2_sorrk")]
+position = Vector2(340, 600)
+
+[node name="Dechet" type="Sprite2D" parent="."]
+position = Vector2(287, 869)
+texture = ExtResource("4_gxwc2")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://qehu1ogs35hq"]
+
+[ext_resource type="Script" path="res://scenes/dechet.gd" id="1_fg8gv"]
+[ext_resource type="Texture2D" uid="uid://cmhaiqadm32d" path="res://assets/graphics/dechet.png" id="2_kkegi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0huke"]
+size = Vector2(74, 74)
+
+[node name="Dechet" type="Node2D"]
+script = ExtResource("1_fg8gv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kkegi")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" groups=["dechet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("RectangleShape2D_0huke")

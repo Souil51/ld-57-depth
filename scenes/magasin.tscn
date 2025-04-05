@@ -1,0 +1,203 @@
+[gd_scene load_steps=3 format=3 uid="uid://c88j1t186d8eq"]
+
+[ext_resource type="Script" path="res://scenes/magasin.gd" id="1_uaob7"]
+[ext_resource type="Texture2D" uid="uid://ecqnqevnuwn5" path="res://icon.svg" id="2_jngrr"]
+
+[node name="Magasin" type="Node2D"]
+script = ExtResource("1_uaob7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -204.0
+offset_top = -276.0
+offset_right = 207.0
+offset_bottom = -238.0
+theme_override_font_sizes/font_size = 24
+text = "You can now buy an upgrade"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Message" type="Label" parent="."]
+visible = false
+offset_left = -194.0
+offset_top = 163.0
+offset_right = 197.0
+offset_bottom = 206.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_1" type="Sprite2D" parent="."]
+position = Vector2(-200, 0)
+texture = ExtResource("2_jngrr")
+
+[node name="Button" type="Button" parent="item_1"]
+offset_left = -31.0
+offset_top = 100.0
+offset_right = 38.0
+offset_bottom = 131.0
+text = "Buy"
+
+[node name="Label_Titre" type="Label" parent="item_1"]
+offset_left = -77.0
+offset_top = -213.0
+offset_right = 84.0
+offset_bottom = -184.0
+theme_override_font_sizes/font_size = 20
+text = "titre"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="item_1"]
+offset_left = -77.0
+offset_top = -180.0
+offset_right = 84.0
+offset_bottom = -105.0
+theme_override_colors/font_color = Color(0.61767, 0.61767, 0.61767, 1)
+text = "a
+a
+a"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label_Value" type="Label" parent="item_1"]
+offset_left = -78.0
+offset_top = -95.0
+offset_right = 83.0
+offset_bottom = -69.0
+theme_override_font_sizes/font_size = 20
+text = "x%
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Price" type="Label" parent="item_1"]
+offset_left = -72.0
+offset_top = 68.0
+offset_right = 89.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 0.602802, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "x%
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="item_2" type="Sprite2D" parent="."]
+texture = ExtResource("2_jngrr")
+
+[node name="Button" type="Button" parent="item_2"]
+offset_left = -35.0
+offset_top = 102.0
+offset_right = 34.0
+offset_bottom = 133.0
+text = "Buy"
+
+[node name="Label" type="Label" parent="item_2"]
+offset_left = -87.0
+offset_top = -180.0
+offset_right = 85.0
+offset_bottom = -105.0
+theme_override_colors/font_color = Color(0.61767, 0.61767, 0.61767, 1)
+text = "a
+a
+a"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label_Value" type="Label" parent="item_2"]
+offset_left = -73.0
+offset_top = -92.0
+offset_right = 88.0
+offset_bottom = -69.0
+theme_override_font_sizes/font_size = 20
+text = "x%
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Price" type="Label" parent="item_2"]
+offset_left = -72.0
+offset_top = 68.0
+offset_right = 89.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 0.602802, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "x%
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Titre" type="Label" parent="item_2"]
+offset_left = -77.0
+offset_top = -213.0
+offset_right = 84.0
+offset_bottom = -184.0
+theme_override_font_sizes/font_size = 20
+text = "titre"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="item_3" type="Sprite2D" parent="."]
+position = Vector2(200, 0)
+texture = ExtResource("2_jngrr")
+
+[node name="Button" type="Button" parent="item_3"]
+offset_left = -31.0
+offset_top = 104.0
+offset_right = 38.0
+offset_bottom = 135.0
+text = "Buy"
+
+[node name="Label" type="Label" parent="item_3"]
+offset_left = -79.0
+offset_top = -180.0
+offset_right = 82.0
+offset_bottom = -105.0
+theme_override_colors/font_color = Color(0.61767, 0.61767, 0.61767, 1)
+text = "a
+a
+a"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label_Value" type="Label" parent="item_3"]
+offset_left = -72.0
+offset_top = -92.0
+offset_right = 89.0
+offset_bottom = -69.0
+theme_override_font_sizes/font_size = 20
+text = "x%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Price" type="Label" parent="item_3"]
+offset_left = -72.0
+offset_top = 68.0
+offset_right = 89.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 0.602802, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "x%
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_Titre" type="Label" parent="item_3"]
+offset_left = -77.0
+offset_top = -213.0
+offset_right = 84.0
+offset_bottom = -184.0
+theme_override_font_sizes/font_size = 20
+text = "titre"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="item_1/Button" to="." method="_on_bonus_0_pressed"]
+[connection signal="pressed" from="item_2/Button" to="." method="_on_bonus_1_pressed"]
+[connection signal="pressed" from="item_3/Button" to="." method="_on_bonus_2_pressed"]

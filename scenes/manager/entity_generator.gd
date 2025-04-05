@@ -1,0 +1,110 @@
+extends Node2D
+
+class_name EntityGenerator
+
+const tresor_scene = preload("res://scenes/tresor.tscn")
+const dechet_scene = preload("res://scenes/dechet.tscn")
+
+@export var textures: Array[Texture2D] = []
+
+var _depth: float = 0
+
+var _is_moving: bool = false
+
+var _steps_tresors_1: Array = [ 0, 200, 500, 1000 ]
+var _steps_tresors_1_factors: Array = [ 0.45, 0.25, 0.05, 0.0 ]
+
+var _steps_tresors_2: Array = [ 150, 200, 400, 1000, 2000 ]
+var _steps_tresors_2_factors: Array = [ 0.25, 0.45, 0.25, 0.05, 0.0 ]
+
+var _steps_tresors_3: Array = [ 150, 200, 350, 1000 ]
+var _steps_tresors_3_factors: Array = [ 0.025, 0.025, 0.35, 0.4 ]
+
+var _steps_dechet: Array = [ 0, 200, 400, 600, 1000, 2000 ]
+var _steps_dechet_factors: Array = [ 0.2, 0.16, 0.12, 0.08, 0.04, 0.02 ]
+
+func _ready() -> void:
+	Game.depth_updated.connect(depth_updated)
+	Game.selector_is_moving.connect(selector_is_moving)
+
+func _process(delta: float) -> void:
+	pass
+
+func depth_updated(value: float):
+	_depth = value
+
+func selector_is_moving(value: bool):
+	_is_moving = value
+	
+	if _is_moving:
+		$Timer.wait_time = 1.0
+	else:
+		$Timer.wait_time = 10.0
+
+func _on_timer_timeout() -> void:
+	var t1_next_steps = _steps_tresors_1.filter(func(x): return x > _depth)
+	var t1_factor = 0
+	if t1_next_steps.size() > 0:
+		var t1_depth = t1_next_steps[0]
+		print(str(t1_depth))
+		var index_t1 = _steps_tresors_1.find(t1_depth)
+		print(str(index_t1))
+		t1_factor = _steps_tresors_1_factors[index_t1 - 1]
+		print(str(t1_factor))
+	
+	var t2_next_steps = _steps_tresors_2.filter(func(x): return x > _depth)
+	var t2_factor = 0
+	if t2_next_steps.size() > 0:
+		var t2_depth = t2_next_steps[0]
+		var index_t2 = _steps_tresors_2.find(t2_depth)
+		t2_factor = _steps_tresors_2_factors[index_t2]
+	
+	var t3_next_steps = _steps_tresors_3.filter(func(x): return x > _depth)
+	var t3_factor = 0
+	if t3_next_steps.size() > 0:
+		var t3_depth = t3_next_steps[0]
+		var index_t3 = _steps_tresors_3.find(t3_depth)
+		t3_factor = _steps_tresors_3_factors[index_t3]
+	
+	var dechet_next_steps = _steps_dechet.filter(func(x): return x < _depth)
+	var dechet_factor = 0
+	if dechet_next_steps.size() > 0:
+		var dechet_depth = dechet_next_steps[0]
+		var index_dechet = _steps_dechet.find(dechet_depth)
+		dechet_factor = _steps_dechet_factors[index_dechet]
+	
+	var is_t1_spawn = randf() <= t1_factor
+	var is_t2_spawn = randf() <= t2_factor
+	var is_t3_spawn = randf() <= t3_factor
+	var is_dechet_spawn = randf() <= dechet_factor
+	
+	if is_t1_spawn:
+		spawn_tresor(Game.TypeTresor.BRONZE)
+		
+	if is_t2_spawn:
+		spawn_tresor(Game.TypeTresor.ARGENT)
+		
+	if is_t3_spawn:
+		spawn_tresor(Game.TypeTresor.OR)
+	
+	if is_dechet_spawn:
+		spawn_dechet(1.0 + (randf() * 0.5))
+	
+
+func spawn_tresor(type: Game.TypeTresor):
+	var new_tresor_scene = tresor_scene.instantiate()
+	var tresor = new_tresor_scene as Tresor
+	tresor.init_scene(type, textures[type])
+	Game.spawn_tresor.emit(tresor)
+	
+func spawn_dechet(size: float):
+	var new_dechet_scene = dechet_scene.instantiate()
+	var dechet = new_dechet_scene as Dechet
+	dechet.init_scene(size)
+	Game.spawn_dechet.emit(dechet)
+
+func start_generation():
+	$Timer.start()
+	
+func stop_generation():
+	$Timer.stop()
