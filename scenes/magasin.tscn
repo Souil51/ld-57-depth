@@ -20,9 +20,9 @@ _texture_acceleration = ExtResource("5_apl65")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -206.0
-offset_top = -306.0
+offset_top = -314.0
 offset_right = 205.0
-offset_bottom = -268.0
+offset_bottom = -276.0
 theme_override_font_sizes/font_size = 24
 text = "You can now buy an upgrade"
 horizontal_alignment = 1
@@ -37,9 +37,9 @@ anchor_top = 9.05263
 anchor_right = 0.508516
 anchor_bottom = 9.05263
 offset_left = -206.0
-offset_top = -265.0
+offset_top = -273.0
 offset_right = 205.0
-offset_bottom = -227.0
+offset_bottom = -235.0
 theme_override_font_sizes/font_size = 24
 text = "You have 13"
 horizontal_alignment = 1
@@ -105,7 +105,10 @@ offset_left = -77.0
 offset_top = -213.0
 offset_right = 84.0
 offset_bottom = -184.0
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -13
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 22
 text = "titre"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -118,6 +121,9 @@ offset_top = -180.0
 offset_right = 83.0
 offset_bottom = -105.0
 theme_override_colors/font_color = Color(0.857536, 0.857536, 0.857536, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 16
 text = "a
 a
 a"
@@ -131,6 +137,8 @@ offset_left = -81.0
 offset_top = -102.0
 offset_right = 80.0
 offset_bottom = -60.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 30
 text = "x%
 "
@@ -200,6 +208,9 @@ offset_top = -180.0
 offset_right = 86.0
 offset_bottom = -105.0
 theme_override_colors/font_color = Color(0.857536, 0.857536, 0.857536, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 16
 text = "a
 a
 a"
@@ -213,6 +224,8 @@ offset_left = -81.0
 offset_top = -103.0
 offset_right = 80.0
 offset_bottom = -61.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 30
 text = "x%
 "
@@ -240,10 +253,13 @@ texture = ExtResource("6_4uuqh")
 
 [node name="Label_Titre" type="Label" parent="item_2"]
 offset_left = -81.0
-offset_top = -213.0
+offset_top = -224.0
 offset_right = 80.0
-offset_bottom = -184.0
-theme_override_font_sizes/font_size = 20
+offset_bottom = -175.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -13
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 22
 text = "titre"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -295,6 +311,9 @@ offset_top = -180.0
 offset_right = 85.0
 offset_bottom = -105.0
 theme_override_colors/font_color = Color(0.857536, 0.857536, 0.857536, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 16
 text = "a
 a
 a"
@@ -308,6 +327,8 @@ offset_left = -81.0
 offset_top = -102.0
 offset_right = 80.0
 offset_bottom = -60.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 30
 text = "x%"
 horizontal_alignment = 1
@@ -337,7 +358,10 @@ offset_left = -77.0
 offset_top = -213.0
 offset_right = 84.0
 offset_bottom = -184.0
-theme_override_font_sizes/font_size = 20
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -13
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 22
 text = "titre"
 horizontal_alignment = 1
 vertical_alignment = 1

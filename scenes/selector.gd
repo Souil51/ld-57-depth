@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Selector
+
 @onready var selector: Node2D = $selector
 
 var _is_moving: bool = false
@@ -12,9 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _physics_process(delta: float) -> void:
-	#print(str(mouse_position))
 	if _is_moving:
 		var mouse_position = get_global_mouse_position() - global_position
 		#var mouse_position = get_global_mouse_position() - get_parent().global_position
@@ -37,3 +37,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
 		_is_moving = true
 		Game.selector_is_moving.emit(true)
+
+func reset_value():
+	selector.position = Vector2(300, selector.position.y)

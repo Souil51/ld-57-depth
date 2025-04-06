@@ -15,6 +15,7 @@ signal tresor_recovered(tresor: TypeTresor)
 signal tresor_thrown(tresor: TypeTresor)
 
 signal bonus_bought(bonus: Game.Bonus, value: float, price: float)
+signal bonus_cant_buy()
 
 signal enable_music()
 signal disable_music()

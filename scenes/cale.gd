@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 	pass
 
 func tresor_recovered(typeTresor: Game.TypeTresor):
-	print("Un nouveau trésor dans la cale du bateau")
+	
 	if typeTresor == Game.TypeTresor.BRONZE:
 		tresors_1_count += 1
 	elif typeTresor == Game.TypeTresor.ARGENT:

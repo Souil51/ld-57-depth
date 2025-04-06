@@ -93,6 +93,10 @@ func show_bonus(index: int, bonus: Game.Bonus, value: int, price: float):
 		else:
 			label_value_0.text = ""
 		label_price_0.text = str(price)
+		if price > _gold:
+			label_price_0.set("theme_override_colors/font_color", Color.RED)
+		else:
+			label_price_0.set("theme_override_colors/font_color", Color.ORANGE)
 	elif index == 1:
 		_bonus_1 = bonus
 		_bonus_1_value = value
@@ -106,6 +110,10 @@ func show_bonus(index: int, bonus: Game.Bonus, value: int, price: float):
 		else:
 			label_value_1.text = ""
 		label_price_1.text = str(price)
+		if price > _gold:
+			label_price_1.set("theme_override_colors/font_color", Color.RED)
+		else:
+			label_price_1.set("theme_override_colors/font_color", Color.ORANGE)
 	elif index == 2:
 		_bonus_2 = bonus
 		_bonus_2_value = value
@@ -119,6 +127,10 @@ func show_bonus(index: int, bonus: Game.Bonus, value: int, price: float):
 		else:
 			label_value_2.text = ""
 		label_price_2.text = str(price)
+		if price > _gold:
+			label_price_1.set("theme_override_colors/font_color", Color.RED)
+		else:
+			label_price_1.set("theme_override_colors/font_color", Color.ORANGE)
 
 func get_string_bonus(bonus: Game.Bonus):
 	match bonus:
@@ -217,18 +229,21 @@ func _on_bonus_0_pressed() -> void:
 		Game.bonus_bought.emit(_bonus_0, _bonus_0_value / 100.0, _bonus_0_price)
 	else:
 		message_label.text = "Not enough money"
-		message_label.visible = true
+		#message_label.visible = true
+		Game.bonus_cant_buy.emit()
 
 func _on_bonus_1_pressed() -> void:
 	if _gold >= _bonus_1_price:
 		Game.bonus_bought.emit(_bonus_1, _bonus_1_value / 100.0, _bonus_1_price)
 	else:
 		message_label.text = "Not enough money"
-		message_label.visible = true
+		#message_label.visible = true
+		Game.bonus_cant_buy.emit()
 
 func _on_bonus_2_pressed() -> void:
 	if _gold >= _bonus_2_price:
 		Game.bonus_bought.emit(_bonus_2, _bonus_2_value / 100.0, _bonus_2_price)
 	else:
 		message_label.text = "Not enough money"
-		message_label.visible = true
+		#message_label.visible = true
+		Game.bonus_cant_buy.emit()

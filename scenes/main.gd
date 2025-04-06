@@ -69,18 +69,11 @@ var _weight_factor: float = 1
 
 var _speed_rate: float = 1
 var _idle_down_rate: float = 1
-var _oxygen_gain_per_tresor: float = 0
-
-#var _depletion_bonus_rate: float = 100
-#var _light_rate: float = 1
-#var _dechet_deplete_rate: float = 1
-#var _weight_factor: float = 100
-#var _speed_rate: float = 10
-#var _idle_down_rate: float = 0.1
-#var _oxygen_gain_per_tresor: float = -100
+var _oxygen_gain_per_tresor: float = 1
 
 var _alerte: bool = false
-var _tresor_detection_range: float = 1.0
+
+var _tresor_detection_range: float = 2.0
 var _has_bonus_detection: bool = false
 
 var _magasin: Magasin
@@ -105,6 +98,7 @@ func _ready() -> void:
 	Game.spawn_tresor.connect(spawn_tresor)
 	Game.spawn_dechet.connect(spawn_dechet)
 	Game.bonus_bought.connect(bonus_bought)
+	Game.bonus_cant_buy.connect(bonus_cant_buy)
 	Game.enable_music.connect(enable_music)
 	Game.disable_music.connect(disable_music)
 	
@@ -185,7 +179,7 @@ func _process(delta: float) -> void:
 				lower_distance = distance
 				closest = tresor
 		
-		if _closest_tresor != closest and has_bonus_detection():
+		if _closest_tresor != closest and has_bonus_detection() and radar.visible:
 			AudioManager.play_sound(audio_player, AudioManager.Sounds.DETECTION)
 		
 		_closest_tresor = closest
@@ -229,8 +223,15 @@ func selector_moved(value: float):
 	#ancre.position = Vector2(((_ancre_max_x - _ancre_min_x) * value / 100) + 50, ancre.position.y)
 	var new_x = ((_ancre_max_x - _ancre_min_x) * value / 100) + 50
 	ancre.position = ancre.position.lerp(Vector2(new_x, ancre.position.y), 0.1)
+	
+	$ancre_parent/ancre/Sprite2D.rotation_degrees = ((new_x - ancre.position.x) / new_x) * 50
+	if abs(value - _selector_value) > 0.5:
+		if value < _selector_value:
+			$ancre_parent/ancre/Sprite2D.scale.x = 1
+		else:
+			$ancre_parent/ancre/Sprite2D.scale.x = -1
+	
 	_selector_value = value
-	print(str(value))
 
 func selector_is_moving(value: bool):
 	if _state == Game.State.MENU:
@@ -242,7 +243,6 @@ func selector_is_moving(value: bool):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("tresor"):
 		var tresor = area.get_parent().get_parent() as Tresor
-		print("un trésor ! " + str(tresor.type))
 		
 		if tresor.type == Game.TypeTresor.BRONZE:
 			tresors_1_count += 1
@@ -256,15 +256,14 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 		Game.tresor_recovered.emit(tresor.type)
 		
-		_oxygen += _oxygen_gain_per_tresor
+		_oxygen = min(100, _oxygen + _oxygen_gain_per_tresor)
 		
 		tresor.queue_free()
 		_tresors.erase(tresor)
 	elif area.is_in_group("dechet"):
 		var dechet = area.get_parent().get_parent() as Dechet
-		print("un déchet ! " + str(dechet.size))
 		
-		_oxygen -= dechet.size * 10 * _dechet_deplete_rate
+		_oxygen = max(0, _oxygen - (dechet.size * 10 * _dechet_deplete_rate))
 		
 		dechet.queue_free()
 		
@@ -323,10 +322,10 @@ func stop_game(defeat: bool):
 	var bonus: float = 0
 	if defeat:
 		AudioManager.play_sound(audio_player, AudioManager.Sounds.DEFAITE)
-		bonus = (tresors_1_count * 0.66) + (tresors_2_count * 0.5) + (tresors_3_count * 0.25)
+		bonus = (tresors_1_count * 0.25) + (tresors_2_count * 0.25) + (tresors_3_count * 0.25)
 		message = "You lose your submarine at a depth of " + str(_depth as int) + "\nYou manage somehow to retrieve pieces of your treasures +" + str(bonus) + "G"
 	else:
-		bonus = tresors_1_count + (tresors_2_count * 1.25) + (tresors_3_count * 1.5)
+		bonus = (tresors_1_count * 0.75) + (tresors_2_count * 1) + (tresors_3_count * 1.25)
 		
 		var lose_percent = 0
 		var bonus_lose_factor = 0
@@ -347,6 +346,7 @@ func stop_game(defeat: bool):
 	_best_dive = _depth
 	
 	_selector_value = 50
+	($CanvasLayer/Selector as Selector).reset_value()
 	handle_paralax()
 	
 	var tween_transition = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
@@ -378,7 +378,6 @@ func spawn_tresor(tresor: Tresor):
 	var x = (randf() * get_viewport_rect().size.x * 0.8) + (get_viewport_rect().size.x * 0.1)
 	var y = camera.position.y + (get_viewport_rect().size.y * 0.75) #+ (randf() * get_viewport_rect().size.y * 0.33)
 	tresor.position = Vector2(x, y)
-	print("new spawn tresor")
 	
 	_tresors.push_back(tresor)
 	
@@ -510,3 +509,6 @@ func enable_music():
 	
 func disable_music():
 	main_audio_player.stop()
+
+func bonus_cant_buy():
+	AudioManager.play_sound(audio_player, AudioManager.Sounds.WRONG)

@@ -13,16 +13,16 @@ var _depth: float = 0
 var _is_moving: bool = false
 
 var _steps_tresors_1: Array = [ 0, 1500, 3000, 6000 ]
-var _steps_tresors_1_factors: Array = [ 0.45, 0.25, 0.1, 0.01 ]
+var _steps_tresors_1_factors: Array = [ 0.35, 0.15, 0.1, 0.03 ]
 
 var _steps_tresors_2: Array = [ 1250, 1500, 3000, 5000 ]
-var _steps_tresors_2_factors: Array = [ 0.15, 0.45, 0.25, 0.05 ]
+var _steps_tresors_2_factors: Array = [ 0.10, 0.35, 0.15, 0.05 ]
 
 var _steps_tresors_3: Array = [ 2500, 4000, 6000, 8000 ]
-var _steps_tresors_3_factors: Array = [ 0.05, 0.1, 0.2, 0.1 ]
+var _steps_tresors_3_factors: Array = [ 0.03, 0.1, 0.2, 0.15 ]
 
 var _steps_dechet: Array = [ 0, 2003, 4000, 6000, 10000 ]
-var _steps_dechet_factors: Array = [ 0.2, 0.3, 0.4, 0.6, 0.07 ]
+var _steps_dechet_factors: Array = [ 0.3, 0.4, 0.5, 0.7, 0.8 ]
 
 func _ready() -> void:
 	Game.depth_updated.connect(depth_updated)
@@ -47,11 +47,9 @@ func _on_timer_timeout() -> void:
 	var t1_factor = 0
 	if t1_next_steps.size() > 0:
 		var t1_depth = t1_next_steps[0]
-		print(str(t1_depth))
 		var index_t1 = _steps_tresors_1.find(t1_depth)
-		print(str(index_t1))
 		t1_factor = _steps_tresors_1_factors[index_t1 - 1]
-		print(str(t1_factor))
+		
 	
 	var t2_next_steps = _steps_tresors_2.filter(func(x): return x > _depth)
 	var t2_factor = 0
@@ -79,13 +77,16 @@ func _on_timer_timeout() -> void:
 	var is_t3_spawn = randf() <= t3_factor
 	var is_dechet_spawn = randf() <= dechet_factor
 	
+	var already_spawned = false
 	if is_t1_spawn:
 		spawn_tresor(Game.TypeTresor.BRONZE)
+		already_spawned = true
 		
-	if is_t2_spawn:
+	if is_t2_spawn and !already_spawned:
 		spawn_tresor(Game.TypeTresor.ARGENT)
+		already_spawned = true
 		
-	if is_t3_spawn:
+	if is_t3_spawn and !already_spawned:
 		spawn_tresor(Game.TypeTresor.OR)
 	
 	if is_dechet_spawn:

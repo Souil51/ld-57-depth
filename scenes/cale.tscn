@@ -165,23 +165,14 @@ vertical_alignment = 1
 
 [node name="weigt_factor" type="Label" parent="."]
 offset_left = -36.0
-offset_top = 167.0
+offset_top = 162.0
 offset_right = 230.0
-offset_bottom = 216.0
-theme_override_font_sizes/font_size = 14
+offset_bottom = 211.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -6
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 22
 text = "The weigt make your oxygen depletes X times faster"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="."]
-offset_left = -44.0
-offset_top = 218.0
-offset_right = 215.0
-offset_bottom = 261.0
-theme_override_font_sizes/font_size = 14
-text = "Throw some of your treasures to manage this
-"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

@@ -1,6 +1,6 @@
 extends Node
 
-enum Sounds { ACHAT, ALARM, DECHET, DEFAITE, DETECTION, RANDOM_1, RANDOM_2, RISE, SKIP, START, THROW, TRESOR_1, TRESOR_2, TRESOR_3 }
+enum Sounds { ACHAT, ALARM, DECHET, DEFAITE, DETECTION, RANDOM_1, RANDOM_2, RISE, SKIP, START, THROW, TRESOR_1, TRESOR_2, TRESOR_3, WRONG }
 
 var sound_files = [
 	"res://assets/sound/new_song.wav"
@@ -20,7 +20,8 @@ var dic_sound = {
 	Sounds.THROW: "res://assets/fx/throw.wav",
 	Sounds.TRESOR_1: "res://assets/fx/tresor_1.wav",
 	Sounds.TRESOR_2: "res://assets/fx/tresor_2.wav",
-	Sounds.TRESOR_3: "res://assets/fx/tresor_3.wav"
+	Sounds.TRESOR_3: "res://assets/fx/tresor_3.wav",
+	Sounds.WRONG: "res://assets/fx/wrong.wav"
 }
 
 func play_sound(player: AudioStreamPlayer , sound: Sounds, volume: float = 0) -> void:
@@ -31,4 +32,5 @@ func play_sound(player: AudioStreamPlayer , sound: Sounds, volume: float = 0) ->
 		player.volume_db = volume
 		player.play()
 	else:
-		print("Error: Could not load sound file: ", sound)
+		#print("Error: Could not load sound file: ", sound)
+		pass
