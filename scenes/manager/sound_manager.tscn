@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6ue5m8nohnnb"]
+
+[ext_resource type="Script" path="res://scenes/manager/sound_manager.gd" id="1_vxhil"]
+[ext_resource type="Texture2D" uid="uid://duktxcyrjot3" path="res://assets/graphics/volume_on.png" id="2_5ao3n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mp2tj"]
+size = Vector2(72, 71)
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_vxhil")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5ao3n")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_mp2tj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -105.0
+offset_top = 34.0
+offset_right = 106.0
+offset_bottom = 86.0
+theme_override_font_sizes/font_size = 30
+text = "Toggle music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]

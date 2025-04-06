@@ -2,10 +2,12 @@ extends Node2D
 
 class_name BackgroundManager
 
-@export var textures: Array[Texture2D] = []
-@export var speed: float = 100
+const entity_scene = preload("res://scenes/background_entity.tscn")
 
-var _sprites: Array[Sprite2D] = []
+@export var textures: Array[Texture2D] = []
+@export var speed: float = 25
+
+var _sprites: Array[BackgroundEntity] = []
 
 var time_passed = 0
 var _time_speed = 1
@@ -24,24 +26,19 @@ func _process(delta: float) -> void:
 		if (s.scale.x > 0 and s.position.x > get_viewport_rect().size.x + 50) or (s.scale.x <= 0 and s.position.x < -50):
 			_sprites.erase(s)
 			s.queue_free()
-		
-		if s.scale.x > 0:
-			s.position.x += delta * speed
-		else:
-			s.position.x -= delta * speed
-		
-		s.position.y = s.position.y + (0.5 * sin(time_passed * 2))
-	
-	#print(str(sin(Time.get_ticks_usec() / 1000000)))
-	#print(str(Time.get_ticks_usec() / 100000))
 
 func instantiate_sprite():
 	var direction = randi_range(0, 1)
 	if direction == 0: direction = -1
 	
-	var sprite = Sprite2D.new()
+	var new_entity = entity_scene.instantiate()
 	var index = randi_range(0, textures.size() - 1)
-	sprite.texture = textures[index]
+	
+	var base_scale = 0.25
+	if index == 0:
+		base_scale = 0.1
+		
+	var name = "background" + str(get_child_count())
 	
 	var pos_x = 0
 	if direction == 1:
@@ -51,15 +48,16 @@ func instantiate_sprite():
 		
 	var screen_height = get_viewport_rect().size.x
 	var pos_y = randi_range(screen_height * 0.1, screen_height * 0.9)
-	sprite.position = Vector2(pos_x, pos_y)
-	sprite.name = "background" + str(get_child_count())
-	sprite.scale = Vector2(0.25 * direction, 0.25)
 	
-	var gray = randf_range(0.05, 0.15)
-	sprite.modulate = Color(gray, gray, gray, 1)
-	add_child(sprite)
+	var new_scale = Vector2(0.25 * direction, 0.25)
+	if index == 0:
+		new_scale = Vector2(0.1 * direction, 0.1)
 	
-	_sprites.push_back(sprite)
+	new_entity._init_scene(textures[index], base_scale, name, Vector2(pos_x, pos_y), new_scale)
+
+	add_child(new_entity)
+	
+	_sprites.push_back(new_entity as BackgroundEntity)
 
 func _on_timer_timeout() -> void:
 	instantiate_sprite()

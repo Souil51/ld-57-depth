@@ -1,21 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://c88j1t186d8eq"]
+[gd_scene load_steps=10 format=3 uid="uid://c88j1t186d8eq"]
 
 [ext_resource type="Script" path="res://scenes/magasin.gd" id="1_uaob7"]
-[ext_resource type="Texture2D" uid="uid://ecqnqevnuwn5" path="res://icon.svg" id="2_jngrr"]
+[ext_resource type="Texture2D" uid="uid://cj2hadodcynal" path="res://assets/graphics/oxygene_4x.png" id="2_usggi"]
+[ext_resource type="Texture2D" uid="uid://dqfcm70jdlgbe" path="res://assets/graphics/ampoule_4x.png" id="3_o7ctx"]
+[ext_resource type="Texture2D" uid="uid://b8k48l4o6cmy5" path="res://assets/graphics/button_base_4x.png" id="3_rs0vu"]
+[ext_resource type="Texture2D" uid="uid://bckh0c2fj0wm0" path="res://assets/graphics/button_pressed_4x.png" id="4_aj1ak"]
+[ext_resource type="Texture2D" uid="uid://b1shx0ke0eve8" path="res://assets/graphics/treosr_3_ok_4x.png" id="4_xyrfe"]
+[ext_resource type="Texture2D" uid="uid://wxt67ef08bhi" path="res://assets/graphics/accelaration_4x.png" id="5_apl65"]
+[ext_resource type="Texture2D" uid="uid://cp51bjsual8el" path="res://assets/graphics/button_hover_4x.png" id="5_lkrld"]
+[ext_resource type="Texture2D" uid="uid://cebcmjjef7hf3" path="res://assets/graphics/gold_4x.png" id="6_4uuqh"]
 
 [node name="Magasin" type="Node2D"]
+position = Vector2(0, -25)
 script = ExtResource("1_uaob7")
+_texture_oxygen = ExtResource("2_usggi")
+_texture_light = ExtResource("3_o7ctx")
+_texture_tresor = ExtResource("4_xyrfe")
+_texture_acceleration = ExtResource("5_apl65")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -204.0
-offset_top = -276.0
-offset_right = 207.0
-offset_bottom = -238.0
+offset_left = -206.0
+offset_top = -306.0
+offset_right = 205.0
+offset_bottom = -268.0
 theme_override_font_sizes/font_size = 24
 text = "You can now buy an upgrade"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Label_Gold" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.508516
+anchor_top = 9.05263
+anchor_right = 0.508516
+anchor_bottom = 9.05263
+offset_left = -206.0
+offset_top = -265.0
+offset_right = 205.0
+offset_bottom = -227.0
+theme_override_font_sizes/font_size = 24
+text = "You have 13"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Label_Gold"]
+position = Vector2(307, 19)
+scale = Vector2(0.544117, 0.544117)
+texture = ExtResource("6_4uuqh")
 
 [node name="Message" type="Label" parent="."]
 visible = false
@@ -28,14 +63,42 @@ vertical_alignment = 1
 
 [node name="item_1" type="Sprite2D" parent="."]
 position = Vector2(-200, 0)
-texture = ExtResource("2_jngrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="item_1"]
+scale = Vector2(0.45, 0.45)
 
 [node name="Button" type="Button" parent="item_1"]
+visible = false
 offset_left = -31.0
 offset_top = 100.0
 offset_right = 38.0
 offset_bottom = 131.0
 text = "Buy"
+
+[node name="TextureButton" type="TextureButton" parent="item_1"]
+offset_left = -59.0
+offset_top = 105.0
+offset_right = 102.0
+offset_bottom = 158.0
+scale = Vector2(0.75, 1)
+texture_normal = ExtResource("3_rs0vu")
+texture_pressed = ExtResource("4_aj1ak")
+texture_hover = ExtResource("5_lkrld")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="item_1/TextureButton"]
+layout_mode = 0
+offset_left = 14.6667
+offset_top = 2.0
+offset_right = 100.667
+offset_bottom = 50.0
+scale = Vector2(1.47, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label_Titre" type="Label" parent="item_1"]
 offset_left = -77.0
@@ -47,145 +110,227 @@ text = "titre"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="item_1"]
-offset_left = -77.0
+offset_left = -78.0
 offset_top = -180.0
-offset_right = 84.0
+offset_right = 83.0
 offset_bottom = -105.0
-theme_override_colors/font_color = Color(0.61767, 0.61767, 0.61767, 1)
+theme_override_colors/font_color = Color(0.857536, 0.857536, 0.857536, 1)
 text = "a
 a
 a"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label_Value" type="Label" parent="item_1"]
-offset_left = -78.0
-offset_top = -95.0
-offset_right = 83.0
-offset_bottom = -69.0
-theme_override_font_sizes/font_size = 20
+offset_left = -81.0
+offset_top = -102.0
+offset_right = 80.0
+offset_bottom = -60.0
+theme_override_font_sizes/font_size = 30
 text = "x%
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label_Price" type="Label" parent="item_1"]
-offset_left = -72.0
-offset_top = 68.0
-offset_right = 89.0
-offset_bottom = 94.0
+offset_left = -93.0
+offset_top = 60.0
+offset_right = 68.0
+offset_bottom = 102.0
 theme_override_colors/font_color = Color(1, 0.602802, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "x%
+theme_override_font_sizes/font_size = 30
+text = "13
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="item_1/Label_Price"]
+position = Vector2(116.5, 21.5)
+scale = Vector2(0.455882, 0.455882)
+texture = ExtResource("6_4uuqh")
 
 [node name="item_2" type="Sprite2D" parent="."]
-texture = ExtResource("2_jngrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="item_2"]
+scale = Vector2(0.45, 0.45)
 
 [node name="Button" type="Button" parent="item_2"]
+visible = false
 offset_left = -35.0
 offset_top = 102.0
 offset_right = 34.0
 offset_bottom = 133.0
 text = "Buy"
 
+[node name="TextureButton" type="TextureButton" parent="item_2"]
+offset_left = -59.0
+offset_top = 105.0
+offset_right = 102.0
+offset_bottom = 158.0
+scale = Vector2(0.75, 1)
+texture_normal = ExtResource("3_rs0vu")
+texture_pressed = ExtResource("4_aj1ak")
+texture_hover = ExtResource("5_lkrld")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="item_2/TextureButton"]
+layout_mode = 0
+offset_left = 14.6667
+offset_top = 2.0
+offset_right = 100.667
+offset_bottom = 50.0
+scale = Vector2(1.47, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Label" type="Label" parent="item_2"]
-offset_left = -87.0
+offset_left = -86.0
 offset_top = -180.0
-offset_right = 85.0
+offset_right = 86.0
 offset_bottom = -105.0
-theme_override_colors/font_color = Color(0.61767, 0.61767, 0.61767, 1)
+theme_override_colors/font_color = Color(0.857536, 0.857536, 0.857536, 1)
 text = "a
 a
 a"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label_Value" type="Label" parent="item_2"]
-offset_left = -73.0
-offset_top = -92.0
-offset_right = 88.0
-offset_bottom = -69.0
-theme_override_font_sizes/font_size = 20
+offset_left = -81.0
+offset_top = -103.0
+offset_right = 80.0
+offset_bottom = -61.0
+theme_override_font_sizes/font_size = 30
 text = "x%
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label_Price" type="Label" parent="item_2"]
-offset_left = -72.0
-offset_top = 68.0
-offset_right = 89.0
-offset_bottom = 94.0
+offset_left = -94.0
+offset_top = 62.0
+offset_right = 67.0
+offset_bottom = 104.0
 theme_override_colors/font_color = Color(1, 0.602802, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "x%
+theme_override_font_sizes/font_size = 30
+text = "13
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="item_2/Label_Price"]
+position = Vector2(116.5, 21.5)
+scale = Vector2(0.455882, 0.455882)
+texture = ExtResource("6_4uuqh")
 
 [node name="Label_Titre" type="Label" parent="item_2"]
-offset_left = -77.0
+offset_left = -81.0
 offset_top = -213.0
-offset_right = 84.0
+offset_right = 80.0
 offset_bottom = -184.0
 theme_override_font_sizes/font_size = 20
 text = "titre"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="item_3" type="Sprite2D" parent="."]
 position = Vector2(200, 0)
-texture = ExtResource("2_jngrr")
+
+[node name="Sprite2D" type="Sprite2D" parent="item_3"]
+scale = Vector2(0.45, 0.45)
 
 [node name="Button" type="Button" parent="item_3"]
+visible = false
 offset_left = -31.0
 offset_top = 104.0
 offset_right = 38.0
 offset_bottom = 135.0
 text = "Buy"
 
+[node name="TextureButton" type="TextureButton" parent="item_3"]
+offset_left = -59.0
+offset_top = 105.0
+offset_right = 102.0
+offset_bottom = 158.0
+scale = Vector2(0.75, 1)
+texture_normal = ExtResource("3_rs0vu")
+texture_pressed = ExtResource("4_aj1ak")
+texture_hover = ExtResource("5_lkrld")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="item_3/TextureButton"]
+layout_mode = 0
+offset_left = 14.6667
+offset_top = 2.0
+offset_right = 100.667
+offset_bottom = 50.0
+scale = Vector2(1.47, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Buy"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Label" type="Label" parent="item_3"]
-offset_left = -79.0
+offset_left = -76.0
 offset_top = -180.0
-offset_right = 82.0
+offset_right = 85.0
 offset_bottom = -105.0
-theme_override_colors/font_color = Color(0.61767, 0.61767, 0.61767, 1)
+theme_override_colors/font_color = Color(0.857536, 0.857536, 0.857536, 1)
 text = "a
 a
 a"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label_Value" type="Label" parent="item_3"]
-offset_left = -72.0
-offset_top = -92.0
-offset_right = 89.0
-offset_bottom = -69.0
-theme_override_font_sizes/font_size = 20
+offset_left = -81.0
+offset_top = -102.0
+offset_right = 80.0
+offset_bottom = -60.0
+theme_override_font_sizes/font_size = 30
 text = "x%"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label_Price" type="Label" parent="item_3"]
-offset_left = -72.0
-offset_top = 68.0
-offset_right = 89.0
-offset_bottom = 94.0
+offset_left = -96.0
+offset_top = 60.0
+offset_right = 65.0
+offset_bottom = 102.0
 theme_override_colors/font_color = Color(1, 0.602802, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "x%
+theme_override_font_sizes/font_size = 30
+text = "13
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="item_3/Label_Price"]
+position = Vector2(116.5, 21.5)
+scale = Vector2(0.455882, 0.455882)
+texture = ExtResource("6_4uuqh")
 
 [node name="Label_Titre" type="Label" parent="item_3"]
 offset_left = -77.0
@@ -197,7 +342,11 @@ text = "titre"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="item_1/Button" to="." method="_on_bonus_0_pressed"]
+[connection signal="pressed" from="item_1/TextureButton" to="." method="_on_bonus_0_pressed"]
 [connection signal="pressed" from="item_2/Button" to="." method="_on_bonus_1_pressed"]
+[connection signal="pressed" from="item_2/TextureButton" to="." method="_on_bonus_1_pressed"]
 [connection signal="pressed" from="item_3/Button" to="." method="_on_bonus_2_pressed"]
+[connection signal="pressed" from="item_3/TextureButton" to="." method="_on_bonus_2_pressed"]

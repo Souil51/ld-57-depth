@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d20nbii1e6786"]
+[gd_scene load_steps=36 format=3 uid="uid://d20nbii1e6786"]
 
 [ext_resource type="Texture2D" uid="uid://b874770nl0lrl" path="res://assets/graphics/ancre.png" id="1_5bl3i"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_c23cg"]
@@ -7,22 +7,38 @@
 [ext_resource type="Texture2D" uid="uid://dj4m6ur1y2bg5" path="res://assets/graphics/Sans titre.png" id="3_ha58w"]
 [ext_resource type="Texture2D" uid="uid://dyjuyvqkfipfi" path="res://assets/graphics/montagne_2_4x.png" id="4_5rax6"]
 [ext_resource type="Texture2D" uid="uid://dm7bf74o5mwg0" path="res://assets/graphics/square.png" id="4_6fnpg"]
-[ext_resource type="PackedScene" uid="uid://qehu1ogs35hq" path="res://scenes/dechet.tscn" id="6_44eoj"]
-[ext_resource type="Texture2D" uid="uid://dlyjcxrblug2c" path="res://assets/graphics/tresor_1.png" id="6_texyg"]
+[ext_resource type="Texture2D" uid="uid://ckss7n4bi5srh" path="res://assets/graphics/sous_marin_1_4x.png" id="5_klobb"]
 [ext_resource type="PackedScene" uid="uid://buw3r2fgpi0mc" path="res://scenes/cale.tscn" id="7_avmbb"]
 [ext_resource type="PackedScene" uid="uid://l480keiox2l" path="res://scenes/manager/entity_generator.tscn" id="8_6tcgo"]
-[ext_resource type="Texture2D" uid="uid://cn5lvyk6hvj3c" path="res://assets/graphics/tresor_2.png" id="10_vu4km"]
-[ext_resource type="Texture2D" uid="uid://gel77qsji6ey" path="res://assets/graphics/tresor_3.png" id="11_6mhm6"]
+[ext_resource type="Texture2D" uid="uid://cj3rxhj8yeg57" path="res://assets/graphics/cable_4x.png" id="9_nmj58"]
+[ext_resource type="Texture2D" uid="uid://oxxg5f03gb3v" path="res://assets/graphics/bar_oxygen_4x.png" id="10_bnhf3"]
+[ext_resource type="Texture2D" uid="uid://c5sr50waqw08i" path="res://assets/graphics/bar_depth_4x.png" id="11_lm6ej"]
+[ext_resource type="Texture2D" uid="uid://b8k48l4o6cmy5" path="res://assets/graphics/button_base_4x.png" id="11_tejo3"]
+[ext_resource type="Texture2D" uid="uid://bckh0c2fj0wm0" path="res://assets/graphics/button_pressed_4x.png" id="12_2tpf4"]
 [ext_resource type="Texture2D" uid="uid://88vj8wv7qg0y" path="res://assets/graphics/test_fade.png" id="12_qhk1k"]
+[ext_resource type="Texture2D" uid="uid://ba42h4g4jwnwe" path="res://assets/graphics/depth_selector_4x.png" id="12_vj60o"]
 [ext_resource type="PackedScene" uid="uid://2pvlg0ulw8sc" path="res://scenes/manager/background_manager.tscn" id="13_256am"]
+[ext_resource type="Texture2D" uid="uid://r5ct20jjey4b" path="res://assets/graphics/tresor_1_ok_4x.png" id="13_ikbbd"]
+[ext_resource type="Texture2D" uid="uid://cp51bjsual8el" path="res://assets/graphics/button_hover_4x.png" id="13_v4gia"]
 [ext_resource type="Texture2D" uid="uid://coh038jlsspfo" path="res://assets/graphics/bulle_1.png" id="14_h3ss0"]
+[ext_resource type="Texture2D" uid="uid://bsf8uf2ske850" path="res://assets/graphics/tresor_2_ok_4x.png" id="14_rtjr2"]
+[ext_resource type="Texture2D" uid="uid://b1shx0ke0eve8" path="res://assets/graphics/treosr_3_ok_4x.png" id="15_a7gqs"]
 [ext_resource type="Texture2D" uid="uid://ckjaujdfgv8sq" path="res://assets/graphics/poisson_1.png" id="15_lynyq"]
+[ext_resource type="Texture2D" uid="uid://ceqv5fuoq0o0p" path="res://assets/graphics/alert_icon.png" id="17_70bb0"]
+[ext_resource type="PackedScene" uid="uid://cub8wlnmbv0r4" path="res://scenes/bounce_animation.tscn" id="17_vnope"]
+[ext_resource type="Texture2D" uid="uid://beyhkkyvb1ev2" path="res://assets/graphics/dechet_1_4x.png" id="22_2t2rs"]
+[ext_resource type="Texture2D" uid="uid://qpmb0r073and" path="res://assets/graphics/dechet_2_4x.png" id="23_3mcrs"]
+[ext_resource type="PackedScene" uid="uid://b6ue5m8nohnnb" path="res://scenes/manager/sound_manager.tscn" id="28_2mjgg"]
+[ext_resource type="Texture2D" uid="uid://duktxcyrjot3" path="res://assets/graphics/volume_on.png" id="29_oxdtg"]
+[ext_resource type="AudioStream" uid="uid://10xt2r0tvgpj" path="res://assets/sound/new_song.wav" id="29_tphfa"]
+[ext_resource type="Texture2D" uid="uid://dskc184thktrm" path="res://assets/graphics/volume_off.png" id="30_aoae2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ul6nb"]
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_68ixc"]
-size = Vector2(100, 30)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fys34"]
+radius = 7.25624
+height = 33.5601
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bx0c1"]
 blend_mode = 1
@@ -53,19 +69,25 @@ position = Vector2(-88, 274)
 texture = ExtResource("4_5rax6")
 
 [node name="ancre" type="Sprite2D" parent="ancre_parent"]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(640, 234.25)
-texture = ExtResource("1_5bl3i")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_klobb")
 
 [node name="PointLight2D" type="PointLight2D" parent="ancre_parent/ancre"]
-enabled = false
 blend_mode = 2
 texture = ExtResource("3_ha58w")
+texture_scale = 3.58
 
 [node name="Area2D" type="Area2D" parent="ancre_parent/ancre" groups=["ancre"]]
+position = Vector2(4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ancre_parent/ancre/Area2D"]
-position = Vector2(0, -0.25)
-shape = SubResource("RectangleShape2D_68ixc")
+position = Vector2(-8, 19)
+rotation = 1.5708
+scale = Vector2(8.82, 8.82)
+shape = SubResource("CapsuleShape2D_fys34")
 
 [node name="radar" type="Sprite2D" parent="ancre_parent/ancre"]
 visible = false
@@ -84,6 +106,19 @@ rotation = 3.14159
 texture = ExtResource("12_qhk1k")
 centered = false
 
+[node name="cable" type="Sprite2D" parent="ancre_parent/ancre"]
+position = Vector2(196, -9)
+rotation = 3.14159
+scale = Vector2(1, 1.37453)
+texture = ExtResource("9_nmj58")
+centered = false
+
+[node name="BounceAnimation" parent="ancre_parent/ancre/cable" instance=ExtResource("17_vnope")]
+max = 1.25
+min = 1.05
+duration = 10.0
+horizontal = false
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Selector" parent="CanvasLayer" instance=ExtResource("2_sorrk")]
@@ -91,14 +126,35 @@ position = Vector2(360, 607)
 
 [node name="cale" parent="CanvasLayer" instance=ExtResource("7_avmbb")]
 visible = false
-position = Vector2(929, 1)
+position = Vector2(1047, 69)
 
-[node name="remonter" type="Button" parent="CanvasLayer"]
+[node name="remonter_old" type="Button" parent="CanvasLayer"]
+visible = false
 offset_left = 996.0
 offset_top = 618.0
 offset_right = 1129.0
 offset_bottom = 672.0
 text = "Remonter"
+
+[node name="remonter" type="TextureButton" parent="CanvasLayer"]
+offset_left = 1015.0
+offset_top = 625.0
+offset_right = 1176.0
+offset_bottom = 678.0
+scale = Vector2(0.85, 0.85)
+texture_normal = ExtResource("11_tejo3")
+texture_pressed = ExtResource("12_2tpf4")
+texture_hover = ExtResource("13_v4gia")
+
+[node name="Label" type="Label" parent="CanvasLayer/remonter"]
+layout_mode = 0
+offset_left = 51.7647
+offset_top = 4.70588
+offset_right = 110.765
+offset_bottom = 46.7059
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Rise"
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -107,12 +163,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="depth" type="Label" parent="CanvasLayer/HUD"]
+visible = false
 layout_mode = 0
 offset_right = 159.0
 offset_bottom = 50.0
 theme_override_font_sizes/font_size = 24
 
 [node name="oxygen" type="Label" parent="CanvasLayer/HUD"]
+visible = false
 layout_mode = 0
 offset_top = 57.0
 offset_right = 159.0
@@ -131,20 +189,47 @@ text = "Throw treasure or will not be enable to rise without destroy some of the
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="best_dive_label" type="Label" parent="CanvasLayer/HUD"]
+visible = false
+layout_mode = 0
+offset_left = 365.0
+offset_top = 332.0
+offset_right = 913.0
+offset_bottom = 387.0
+theme_override_font_sizes/font_size = 40
+text = "Your best dive was XXX meters"
+
 [node name="oxygen" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1281.0
 offset_bottom = 70.0
 
+[node name="alert_node" type="Node2D" parent="CanvasLayer/oxygen"]
+visible = false
+position = Vector2(640, 86)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/oxygen/alert_node"]
+position = Vector2(-127, 3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_70bb0")
+
+[node name="alert" type="Label" parent="CanvasLayer/oxygen/alert_node"]
+offset_left = -102.0
+offset_top = -13.0
+offset_right = 168.0
+offset_bottom = 22.01
+theme_override_colors/font_color = Color(0.644825, 0.223463, 0.223463, 1)
+theme_override_font_sizes/font_size = 25
+text = "Oxygen level low..."
+
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/oxygen"]
-modulate = Color(0.14699, 0.14699, 0.14699, 1)
-position = Vector2(646, 37)
-scale = Vector2(1.89231, 0.0897436)
-texture = ExtResource("4_6fnpg")
+position = Vector2(646.25, 35)
+scale = Vector2(1.17239, 1.40541)
+texture = ExtResource("10_bnhf3")
 
 [node name="completion" type="Sprite2D" parent="CanvasLayer/oxygen"]
-modulate = Color(0.570149, 0.672503, 1, 1)
+modulate = Color(0.806904, 0.852883, 1, 1)
 position = Vector2(278, 20)
 scale = Vector2(1.88718, 0.0820513)
 texture = ExtResource("4_6fnpg")
@@ -158,25 +243,22 @@ offset_right = 1294.0
 offset_bottom = 70.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/depth"]
-modulate = Color(0.14699, 0.14699, 0.14699, 1)
-position = Vector2(26, 362.5)
-scale = Vector2(0.0205128, 1.74615)
-texture = ExtResource("4_6fnpg")
+position = Vector2(16, 359)
+scale = Vector2(1, 1.06181)
+texture = ExtResource("11_lm6ej")
 
 [node name="completion" type="Sprite2D" parent="CanvasLayer/depth"]
 modulate = Color(0.570149, 0.672503, 1, 1)
-position = Vector2(-2.99999, 28)
-scale = Vector2(0.15641, 0.0307691)
-texture = ExtResource("4_6fnpg")
+position = Vector2(-2.99999, 27)
+texture = ExtResource("12_vj60o")
 centered = false
 
 [node name="Label4" type="Label" parent="CanvasLayer/depth/completion"]
-offset_left = -274.918
-offset_top = -7247.52
-offset_right = 246.082
-offset_bottom = -6137.52
-scale = Vector2(3.59, 13.356)
-theme_override_font_sizes/font_size = 50
+offset_left = 31.0
+offset_top = -10.0
+offset_right = 129.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 20
 text = "300m
 "
 horizontal_alignment = 1
@@ -188,6 +270,40 @@ position = Vector2(-736, 368)
 scale = Vector2(13.94, 31.4667)
 texture = ExtResource("1_5bl3i")
 
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/transition"]
+clip_children = 1
+position = Vector2(-1.18364, -1.33474)
+scale = Vector2(0.261377, 0.0676336)
+texture = ExtResource("4_6fnpg")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/transition/Sprite2D4"]
+modulate = Color(0.165093, 0.165093, 0.165093, 1)
+position = Vector2(-145.873, 358.988)
+scale = Vector2(0.286077, 1.10557)
+texture = ExtResource("4_5rax6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/transition"]
+clip_children = 1
+position = Vector2(0.968426, -0.889833)
+scale = Vector2(0.260273, 0.071056)
+texture = ExtResource("4_6fnpg")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/transition/Sprite2D3"]
+position = Vector2(137.395, 526.858)
+scale = Vector2(0.276029, 1.01107)
+texture = ExtResource("3_5w4rl")
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer/transition"]
+clip_children = 1
+position = Vector2(0.968426, -0.889833)
+scale = Vector2(0.260273, 0.071056)
+texture = ExtResource("4_6fnpg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/transition/Sprite2D5"]
+position = Vector2(-11.1625, 440.539)
+scale = Vector2(0.28729, 1.05232)
+texture = ExtResource("4_5rax6")
+
 [node name="HUD2" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -195,13 +311,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="gold" type="Label" parent="CanvasLayer/HUD2"]
+visible = false
 layout_mode = 0
 offset_top = 114.0
 offset_right = 159.0
 offset_bottom = 164.0
 theme_override_font_sizes/font_size = 24
 
-[node name="skip_shop" type="Button" parent="CanvasLayer"]
+[node name="skip_shop_old" type="Button" parent="CanvasLayer"]
 visible = false
 offset_left = 530.0
 offset_top = 650.0
@@ -210,10 +327,33 @@ offset_bottom = 704.0
 text = "Skip the shop and restart
 "
 
+[node name="skip_shop" type="TextureButton" parent="CanvasLayer"]
+visible = false
+offset_left = 528.895
+offset_top = 644.12
+offset_right = 689.895
+offset_bottom = 697.12
+scale = Vector2(1.475, 1)
+texture_normal = ExtResource("11_tejo3")
+texture_pressed = ExtResource("12_2tpf4")
+texture_hover = ExtResource("13_v4gia")
+
+[node name="Label" type="Label" parent="CanvasLayer/skip_shop"]
+layout_mode = 0
+offset_left = 5.42373
+offset_right = 235.424
+offset_bottom = 51.0
+scale = Vector2(0.64, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Skip and restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="end_label" type="Label" parent="CanvasLayer"]
-offset_left = -2.0
+offset_left = 113.0
 offset_top = 13.0
-offset_right = 1280.0
+offset_right = 1145.0
 offset_bottom = 148.0
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
@@ -241,47 +381,52 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="CanvasLayer/tuto"]
 layout_mode = 0
-offset_left = 348.0
+offset_left = 359.0
 offset_top = 547.0
-offset_right = 934.0
-offset_bottom = 606.0
+offset_right = 959.0
+offset_bottom = 607.0
+pivot_offset = Vector2(300, 0)
 theme_override_font_sizes/font_size = 20
 text = "Slide to move your submarin and start the descent"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BounceAnimation" parent="CanvasLayer/tuto/Label" instance=ExtResource("17_vnope")]
+duration = 4.0
+
 [node name="Label2" type="Label" parent="CanvasLayer/tuto"]
 layout_mode = 0
-offset_left = 925.0
-offset_top = 563.0
-offset_right = 1191.0
-offset_bottom = 591.0
+offset_left = 955.0
+offset_top = 520.0
+offset_right = 1221.0
+offset_bottom = 610.0
 theme_override_font_sizes/font_size = 20
-text = "Rise and sell your treasures"
+text = "Rise and sell your treasures before your oxygen is depleted"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/tuto"]
-position = Vector2(1181, 270.5)
-scale = Vector2(0.516667, 0.516667)
-texture = ExtResource("6_texyg")
+position = Vector2(1168, 158)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("13_ikbbd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/tuto"]
-position = Vector2(1058, 270.5)
-scale = Vector2(0.516667, 0.516667)
-texture = ExtResource("10_vu4km")
+position = Vector2(1055, 158)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("14_rtjr2")
 
 [node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/tuto"]
-position = Vector2(934, 270.5)
-scale = Vector2(0.516667, 0.516667)
-texture = ExtResource("11_6mhm6")
+position = Vector2(939, 158)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_a7gqs")
 
 [node name="Label3" type="Label" parent="CanvasLayer/tuto"]
 layout_mode = 0
 offset_left = 889.0
-offset_top = 301.5
+offset_top = 203.5
 offset_right = 1219.0
-offset_bottom = 329.5
+offset_bottom = 231.5
 theme_override_font_sizes/font_size = 20
 text = "Retrieve treasures from the depth"
 horizontal_alignment = 1
@@ -290,9 +435,9 @@ vertical_alignment = 1
 [node name="Label3" type="Label" parent="CanvasLayer/tuto/Label3"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 33.5
+offset_top = 29.5
 offset_right = 332.0
-offset_bottom = 61.5
+offset_bottom = 57.5
 theme_override_font_sizes/font_size = 20
 text = "Bigger treasures in depth"
 horizontal_alignment = 1
@@ -305,34 +450,74 @@ offset_top = 60.0
 offset_right = 774.0
 offset_bottom = 88.0
 theme_override_font_sizes/font_size = 20
-text = "Oxygen depletes..."
+text = "Oxygen depletes with time..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="CanvasLayer/tuto"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 104.0
-offset_right = 439.0
-offset_bottom = 163.0
+offset_left = 45.0
+offset_top = 231.0
+offset_right = 230.0
+offset_bottom = 383.0
 theme_override_font_sizes/font_size = 20
-text = "Go the deepest you can
-Retrieve treasures to upgrade your ship"
+text = "Go the deepest you can and retrieve treasures to upgrade your ship"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label6" type="Label" parent="CanvasLayer/tuto"]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 427.0
+offset_right = 1232.0
+offset_bottom = 455.0
+theme_override_font_sizes/font_size = 20
+text = "Hit scraps deplete oxygen
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dechet14x" type="Sprite2D" parent="CanvasLayer/tuto"]
+position = Vector2(1032.25, 371)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("22_2t2rs")
+
+[node name="Dechet24x" type="Sprite2D" parent="CanvasLayer/tuto"]
+position = Vector2(1100.25, 368)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("23_3mcrs")
 
 [node name="BackgroundManager" parent="CanvasLayer" instance=ExtResource("13_256am")]
 textures = Array[Texture2D]([ExtResource("14_h3ss0"), ExtResource("15_lynyq")])
 
-[node name="Dechet" parent="." instance=ExtResource("6_44eoj")]
-position = Vector2(626, 359)
+[node name="SoundManager" parent="CanvasLayer" instance=ExtResource("28_2mjgg")]
+position = Vector2(1236, 683)
+scale = Vector2(0.4, 0.4)
+texture_on = ExtResource("29_oxdtg")
+texture_off = ExtResource("30_aoae2")
 
 [node name="EntityGenerator" parent="." instance=ExtResource("8_6tcgo")]
 position = Vector2(0, -1)
-textures = Array[Texture2D]([ExtResource("6_texyg"), ExtResource("10_vu4km"), ExtResource("11_6mhm6")])
+textures = Array[Texture2D]([ExtResource("13_ikbbd"), ExtResource("14_rtjr2"), ExtResource("15_a7gqs")])
+dechetTextures = Array[Texture2D]([ExtResource("22_2t2rs"), ExtResource("23_3mcrs")])
 
 [node name="Line2D" type="Line2D" parent="."]
 
+[node name="audio_player" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="main_audio_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_tphfa")
+volume_db = -30.0
+autoplay = true
+
 [connection signal="area_entered" from="ancre_parent/ancre/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="CanvasLayer/remonter_old" to="." method="_on_remonter_pressed"]
 [connection signal="pressed" from="CanvasLayer/remonter" to="." method="_on_remonter_pressed"]
+[connection signal="pressed" from="CanvasLayer/skip_shop_old" to="." method="_on_skip_shop_pressed"]
 [connection signal="pressed" from="CanvasLayer/skip_shop" to="." method="_on_skip_shop_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

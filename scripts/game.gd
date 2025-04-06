@@ -16,6 +16,8 @@ signal tresor_thrown(tresor: TypeTresor)
 
 signal bonus_bought(bonus: Game.Bonus, value: float, price: float)
 
+signal enable_music()
+signal disable_music()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

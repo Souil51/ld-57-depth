@@ -47,6 +47,7 @@ func _on_tresors_1_pressed() -> void:
 		return
 		
 	tresors_1_count -= 1
+	Game.tresor_thrown.emit(Game.TypeTresor.BRONZE)
 	update_labels()
 
 func _on_tresors_2_pressed() -> void:
@@ -54,6 +55,7 @@ func _on_tresors_2_pressed() -> void:
 		return
 		
 	tresors_2_count -= 1
+	Game.tresor_thrown.emit(Game.TypeTresor.ARGENT)
 	update_labels()
 
 func _on_tresors_3_pressed() -> void:
@@ -61,6 +63,7 @@ func _on_tresors_3_pressed() -> void:
 		return
 		
 	tresors_3_count -= 1
+	Game.tresor_thrown.emit(Game.TypeTresor.OR)
 	update_labels()
 
 func update_labels():

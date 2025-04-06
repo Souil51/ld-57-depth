@@ -6,22 +6,23 @@ const tresor_scene = preload("res://scenes/tresor.tscn")
 const dechet_scene = preload("res://scenes/dechet.tscn")
 
 @export var textures: Array[Texture2D] = []
+@export var dechetTextures: Array[Texture2D] = []
 
 var _depth: float = 0
 
 var _is_moving: bool = false
 
-var _steps_tresors_1: Array = [ 0, 200, 500, 1000 ]
-var _steps_tresors_1_factors: Array = [ 0.45, 0.25, 0.05, 0.0 ]
+var _steps_tresors_1: Array = [ 0, 1500, 3000, 6000 ]
+var _steps_tresors_1_factors: Array = [ 0.45, 0.25, 0.1, 0.01 ]
 
-var _steps_tresors_2: Array = [ 150, 200, 400, 1000, 2000 ]
-var _steps_tresors_2_factors: Array = [ 0.25, 0.45, 0.25, 0.05, 0.0 ]
+var _steps_tresors_2: Array = [ 1250, 1500, 3000, 5000 ]
+var _steps_tresors_2_factors: Array = [ 0.15, 0.45, 0.25, 0.05 ]
 
-var _steps_tresors_3: Array = [ 150, 200, 350, 1000 ]
-var _steps_tresors_3_factors: Array = [ 0.025, 0.025, 0.35, 0.4 ]
+var _steps_tresors_3: Array = [ 2500, 4000, 6000, 8000 ]
+var _steps_tresors_3_factors: Array = [ 0.05, 0.1, 0.2, 0.1 ]
 
-var _steps_dechet: Array = [ 0, 200, 400, 600, 1000, 2000 ]
-var _steps_dechet_factors: Array = [ 0.2, 0.16, 0.12, 0.08, 0.04, 0.02 ]
+var _steps_dechet: Array = [ 0, 2003, 4000, 6000, 10000 ]
+var _steps_dechet_factors: Array = [ 0.2, 0.3, 0.4, 0.6, 0.07 ]
 
 func _ready() -> void:
 	Game.depth_updated.connect(depth_updated)
@@ -94,13 +95,17 @@ func _on_timer_timeout() -> void:
 func spawn_tresor(type: Game.TypeTresor):
 	var new_tresor_scene = tresor_scene.instantiate()
 	var tresor = new_tresor_scene as Tresor
+	tresor.name = "tresor" + str(randi_range(0, 99999))
 	tresor.init_scene(type, textures[type])
 	Game.spawn_tresor.emit(tresor)
 	
 func spawn_dechet(size: float):
+	var textureIndex = randi_range(0, dechetTextures.size() - 1)
 	var new_dechet_scene = dechet_scene.instantiate()
 	var dechet = new_dechet_scene as Dechet
-	dechet.init_scene(size)
+	dechet.name = "dechet" + str(randi_range(0, 99999))
+	var rot = randi_range(-15, 15)
+	dechet.init_scene(size, dechetTextures[textureIndex], rot)
 	Game.spawn_dechet.emit(dechet)
 
 func start_generation():

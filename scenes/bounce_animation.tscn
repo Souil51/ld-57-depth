@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cub8wlnmbv0r4"]
+
+[ext_resource type="Script" path="res://scenes/bounce_animation.gd" id="1_f2evn"]
+
+[node name="BounceAnimation" type="Node2D"]
+script = ExtResource("1_f2evn")

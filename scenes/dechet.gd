@@ -12,5 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func init_scene(new_size: float):
+func init_scene(new_size: float, text: Texture2D, rot: float):
 	size = new_size
+	rotation_degrees = rot
+	$Sprite2D.texture = text
